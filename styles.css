@@ -1,0 +1,135 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  text-align: center;
+  padding: 20px;
+  color: #333;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: calc(33.33% - 40px); /* 3 por linha com espaço entre eles */
+  min-width: 300px;
+  max-width: 400px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  background-color: #f9f9f9;
+  padding: 10px;
+}
+
+.card h4 {
+  margin: 15px 0 5px;
+  color: #444;
+}
+
+.card p {
+  margin: 0 15px 10px;
+  color: #666;
+}
+
+.card a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.card address {
+  font-style: normal;
+  color: #999;
+  font-size: 0.9em;
+}
+
+.filter-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 280px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+  padding: 20px;
+  overflow-y: auto;
+  transition: left 0.3s ease;
+  z-index: 999;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.filter-section {
+  margin-bottom: 20px;
+}
+
+.filter-section strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+  gap: 10px;
+}
+
+.search-bar input {
+  padding: 8px;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-bar button {
+  padding: 8px 15px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.container.blurred {
+  filter: blur(3px) brightness(0.7);
+  transition: filter 0.3s ease;
+}

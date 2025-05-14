@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Empresas de Tecnologia em Joinville</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h2>Empresas de Tecnologia em Joinville</h2>
+
+  <!-- Botão de filtro -->
+  <button id="toggleSidebar" class="filter-button">☰ Filtros</button>
+
+  <!-- Sidebar de filtros -->
+  <div id="sidebar" class="sidebar">
+    <h3>Filtros</h3>
+    <div class="filter-section">
+      <strong>Nicho</strong><br>
+      <label><input type="checkbox"> Alimentício</label><br>
+      <label><input type="checkbox"> Tecnologia</label><br>
+      <label><input type="checkbox"> Saúde</label>
+    </div>
+    <div class="filter-section">
+      <strong>Porte da Empresa</strong><br>
+      <label><input type="checkbox"> Startup</label><br>
+      <label><input type="checkbox"> Pequena</label><br>
+      <label><input type="checkbox"> Média</label><br>
+      <label><input type="checkbox"> Grande</label><br>
+      <label><input type="checkbox"> Multinacional</label>
+    </div>
+    <div class="filter-section">
+      <strong>Bairro</strong><br>
+      <label><input type="checkbox"> Centro</label><br>
+      <label><input type="checkbox"> Boa Vista</label><br>
+      <label><input type="checkbox"> Vila Nova</label>
+    </div>
+    <div class="filter-section">
+      <strong>Horário de Funcionamento</strong><br>
+      <label><input type="checkbox"> 7:30-17:30h</label><br>
+      <label><input type="checkbox"> 9:00-18:00h</label><br>
+      <label><input type="checkbox"> 10:00-20:00h</label>
+    </div>
+  </div>
+
+  <!-- Barra de pesquisa -->
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Pesquisar empresa...">
+    <button id="searchButton">Pesquisar</button>
+  </div>
+
+
+  <div class="container">
+
+    <div class="card">
+      <img src="https://www.tupy.com/wp-content/uploads/2021/03/tupy-logo.png" alt="Tupy Tech">
+      <h4>Tupy Tech</h4>
+      <p>Inovação em fundição com soluções industriais digitais.</p>
+      <a href="https://www.tupy.com/" target="_blank">Saiba mais</a>
+      <address>↑ R. Albano Schmidt, 3400 – Boa Vista</address>
+    </div>
+
+    <div class="card">
+      <img src="https://www.rdstation.com/wp-content/uploads/2020/11/logo_rd_station.png" alt="RD Station">
+      <h4>RD Station</h4>
+      <p>Automação de marketing e CRM para negócios.</p>
+      <a href="https://www.rdstation.com/" target="_blank">Saiba mais</a>
+      <address>↑ R. Max Colin, 1385 – América</address>
+    </div>
+
+    <div class="card">
+      <img src="https://www.ciser.com.br/wp-content/uploads/2020/06/logo-ciser.png" alt="Ciser Digital">
+      <h4>Ciser Digital</h4>
+      <p>Fábrica digital de parafusos e fixadores inteligentes.</p>
+      <a href="https://www.ciser.com.br/" target="_blank">Saiba mais</a>
+      <address>↑ R. Dona Francisca, 10000 – Distrito Industrial</address>
+    </div>
+
+    <div class="card">
+      <img src="https://hiper.com.br/wp-content/uploads/2020/06/logo-hiper.png" alt="Hiper Sistemas">
+      <h4>Hiper Sistemas</h4>
+      <p>Gestão para micro e pequenos comércios.</p>
+      <a href="https://hiper.com.br/" target="_blank">Saiba mais</a>
+      <address>↑ R. Dr. João Colin, 1400 – Centro</address>
+    </div>
+
+    <div class="card">
+      <img src="https://www.exactsales.com.br/wp-content/uploads/2020/06/logo-exact-sales.png" alt="Exact Sales">
+      <h4>Exact Sales</h4>
+      <p>Plataforma de pré-venda e qualificação de leads.</p>
+      <a href="https://www.exactsales.com.br/" target="_blank">Saiba mais</a>
+      <address>↑ R. Dona Francisca, 8300 – Distrito Industrial</address>
+    </div>
+
+    <div class="card">
+      <img src="https://www.bossabox.com/wp-content/uploads/2020/06/logo-bossabox.png" alt="BossaBox Joinville">
+      <h4>BossaBox Joinville</h4>
+      <p>Hub de talentos digitais para squads ágeis.</p>
+      <a href="https://bossabox.com/" target="_blank">Saiba mais</a>
+      <address>↑ R. Timbó, 999 – América</address>
+    </div>
+
+  </div>
+
+  <!-- <script>
+    const toggleButton = document.getElementById('toggleSidebar');
+    const sidebar = document.getElementById('sidebar');
+  
+    toggleButton.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+  </script> -->
+
+  <script>
+    const toggleButton = document.getElementById('toggleSidebar');
+    const sidebar = document.getElementById('sidebar');
+    const container = document.querySelector('.container');
+    const searchInput = document.getElementById('searchInput');
+    const cards = document.querySelectorAll('.card');
+  
+    let sidebarOpen = false;
+  
+    // Alterna visibilidade da sidebar e troca texto do botão
+    toggleButton.addEventListener('click', () => {
+      sidebarOpen = !sidebarOpen;
+  
+      if (sidebarOpen) {
+        sidebar.classList.add('active');
+        container.classList.add('blurred');
+        toggleButton.textContent = 'Filtrar';
+      } else {
+        applyFilters(); // Aplica filtros ao clicar em "Filtrar"
+        sidebar.classList.remove('active');
+        container.classList.remove('blurred');
+        toggleButton.textContent = '☰ Filtros';
+      }
+    });
+  
+    // Busca dinâmica enquanto digita
+    searchInput.addEventListener('input', () => {
+      const term = searchInput.value.trim().toLowerCase();
+      cards.forEach(card => {
+        const name = card.querySelector('h4').textContent.toLowerCase();
+        card.style.display = name.includes(term) ? 'flex' : 'none';
+      });
+    });
+  
+    // Função para aplicar filtros (simulado por enquanto)
+    function applyFilters() {
+      // Aqui você pode adicionar a lógica real de filtro por checkbox
+      console.log('Filtros aplicados');
+    }
+  </script>  
+  
+  
+</body>
+</html>
