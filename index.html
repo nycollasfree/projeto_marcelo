@@ -14,32 +14,42 @@
 
   <!-- Sidebar de filtros -->
   <div id="sidebar" class="sidebar">
-    <h3>Filtros</h3>
+    <br>
+    <br>
+    <br>
     <div class="filter-section">
-      <strong>Nicho</strong><br>
-      <label><input type="checkbox"> Alimentício</label><br>
-      <label><input type="checkbox"> Tecnologia</label><br>
-      <label><input type="checkbox"> Saúde</label>
+      <strong class="filter-title">Nicho <span class="arrow">▼</span></strong>
+      <div class="filter-options hidden">
+        <label><input type="checkbox"> Alimentício</label><br>
+        <label><input type="checkbox"> Tecnologia</label><br>
+        <label><input type="checkbox"> Saúde</label>
+      </div>
     </div>
     <div class="filter-section">
-      <strong>Porte da Empresa</strong><br>
-      <label><input type="checkbox"> Startup</label><br>
-      <label><input type="checkbox"> Pequena</label><br>
-      <label><input type="checkbox"> Média</label><br>
-      <label><input type="checkbox"> Grande</label><br>
-      <label><input type="checkbox"> Multinacional</label>
+      <strong class="filter-title">Porte da Empresa <span class="arrow">▼</span></strong>
+      <div class="filter-options hidden">
+        <label><input type="checkbox"> Startup</label><br>
+        <label><input type="checkbox"> Pequena</label><br>
+        <label><input type="checkbox"> Média</label><br>
+        <label><input type="checkbox"> Grande</label><br>
+        <label><input type="checkbox"> Multinacional</label>
+      </div>
     </div>
     <div class="filter-section">
-      <strong>Bairro</strong><br>
-      <label><input type="checkbox"> Centro</label><br>
-      <label><input type="checkbox"> Boa Vista</label><br>
-      <label><input type="checkbox"> Vila Nova</label>
+      <strong class="filter-title">Bairro <span class="arrow">▼</span></strong>
+      <div class="filter-options hidden">
+        <label><input type="checkbox"> Centro</label><br>
+        <label><input type="checkbox"> Boa Vista</label><br>
+        <label><input type="checkbox"> Vila Nova</label>
+      </div>
     </div>
     <div class="filter-section">
-      <strong>Horário de Funcionamento</strong><br>
-      <label><input type="checkbox"> 7:30-17:30h</label><br>
-      <label><input type="checkbox"> 9:00-18:00h</label><br>
-      <label><input type="checkbox"> 10:00-20:00h</label>
+      <strong class="filter-title">Horário de Funcionamento <span class="arrow">▼</span></strong>
+      <div class="filter-options hidden">
+        <label><input type="checkbox"> 7:30-17:30h</label><br>
+        <label><input type="checkbox"> 9:00-18:00h</label><br>
+        <label><input type="checkbox"> 10:00-20:00h</label>
+      </div>
     </div>
   </div>
 
@@ -102,15 +112,6 @@
 
   </div>
 
-  <!-- <script>
-    const toggleButton = document.getElementById('toggleSidebar');
-    const sidebar = document.getElementById('sidebar');
-  
-    toggleButton.addEventListener('click', () => {
-      sidebar.classList.toggle('active');
-    });
-  </script> -->
-
   <script>
     const toggleButton = document.getElementById('toggleSidebar');
     const sidebar = document.getElementById('sidebar');
@@ -150,8 +151,18 @@
       // Aqui você pode adicionar a lógica real de filtro por checkbox
       console.log('Filtros aplicados');
     }
+
+    const filterTitles = document.querySelectorAll('.filter-title');
+
+    filterTitles.forEach(title => {
+      title.addEventListener('click', () => {
+        const options = title.nextElementSibling;
+        const arrow = title.querySelector('.arrow');
+        options.classList.toggle('hidden');
+        arrow.textContent = options.classList.contains('hidden') ? '▼' : '▶';
+      });
+    });
   </script>  
-  
   
 </body>
 </html>
