@@ -133,3 +133,19 @@ h2 {
   filter: blur(3px) brightness(0.7);
   transition: filter 0.3s ease;
 }
+
+.hidden {
+  display: none;
+}
+
+.filter-title {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow {
+  font-size: 0.8em;
+}
+
